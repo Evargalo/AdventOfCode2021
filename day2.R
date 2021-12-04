@@ -1,7 +1,6 @@
 day2A <- read_table("day2A.txt", col_names = FALSE)
 
 # A
-pos<-c(0,0)
 day2A %>% filter(X1=="forward") %>% summarise(sum(X2))->f
 day2A %>% filter(X1=="up") %>% summarise(sum(X2))->u
 day2A %>% filter(X1=="down") %>% summarise(sum(X2))->d
