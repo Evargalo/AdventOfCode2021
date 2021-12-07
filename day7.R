@@ -8,9 +8,8 @@ cost<-function(k) sum(abs(v-k))
 cost(median(v))
 # 348996
 
-# Check-up
-sapply(X = min(v):max(v),cost) ->fuels
-fuels %>% min
+# Check-up by exhaustive search
+sapply(X = min(v):max(v),cost) %>% min
 # 348996
 
 
@@ -20,11 +19,10 @@ triangular<-function(x) x*(x+1)/2
 cost<-function(k) sum(sapply(v,function(x) triangular(abs(x-k)))) 
 
 # Exhaustive search
-sapply(X = 1:1919,cost) ->fuels
-fuels %>% min
+sapply(X = min(v):max(v),cost) %>% min
 # 98231647
 
-# Faster with a trick
+# Faster with a trick :
 # triangular ~ x^2/2 so the minimum should be reached close from the average value
 cost(round(mean(v)))
 sapply ((round(mean(v))-2):(round(mean(v))+2),cost) %>% min
