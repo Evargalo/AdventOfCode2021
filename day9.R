@@ -24,7 +24,7 @@ grid %>% summarise(sumLP=sum(lp),nbLP=sum(lp!=0))
 
 d<-df  
   
-# Go down until a min - possible because it is given that every non-9 point is part of a single bassin : pas de point-col !
+# Go down until a min - possible because it is given that every non-9 point is part of a single bassin : no collar point !
 findBassin<-function(x,y){
   v<-d[x,y]
     if(v==9) return(0)
