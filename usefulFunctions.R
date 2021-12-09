@@ -1,5 +1,11 @@
 options(digits = 20)
 
+############
+# Data
+############
+# One character per column in a df
+fileToDF<-function(file) read_lines(file) %>% strsplit('') %>% reduce(rbind)
+
 ###############
 # Vectors----
 
