@@ -31,7 +31,6 @@ day10A %>% rowwise() %>% mutate(reps=calcCor(X1)) %>% group_by(reps) %>% count %
 
 score<-function(Opens){
   v<-rev(Opens)
-  print(v)
   sc<-0
   for(c in v){
     sc<-(5*sc)+which(op==c)
