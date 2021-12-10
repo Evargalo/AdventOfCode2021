@@ -60,6 +60,16 @@ df_from_vector_of_strings<-function(v){
 # v<-c("azerty","qsdfgh","wxcvbn")
 # df_from_vector_of_strings(v)
 
+reduceString<-function(s,pattern="[(][)]|[[][]]|[{][}]|[<][>]"){
+  n<-nchar(s)+1
+  while(nchar(s)<n){
+    n<-nchar(s)
+    gsub(pattern,"",s)->s
+  }
+  s
+}
+#reduceString("[({(<(())[]>[[{[]{<()<>>")
+
 ###############
 # Binary ----
 
