@@ -1,4 +1,3 @@
-setwd("C:/Users/mmajr1/Documents/Perso/AdventOfCode/AoC_2021")
 
 day12A <- read_delim("day12testSimple.txt", col_names = FALSE, delim='-')
 day12A <- read_delim("day12test.txt", col_names = FALSE, delim='-')
@@ -19,12 +18,7 @@ maj<-c("BN","LP","PK","EP")
 continue<-function(path,cave){
   unlist(str_split(path,'-'))->prevCaves
   newPaths<-data.frame(path=character(),cave=character())
-  d$X2[day12A$X1==cave] -> nextCaves
-  for(c in nextCaves) {
-    if(c %in% maj | !(c %in% prevCaves)) 
-      newPaths<-newPaths %>% add_row(path=paste(path,c,sep ='-'),cave=c)
-  }
-  d$X1[day12A$X2==cave] -> nextCaves
+  c(day12A$X2[day12A$X1==cave],day12A$X1[day12A$X2==cave]) -> nextCaves
   for(c in nextCaves) {
     if(c %in% maj | !(c %in% prevCaves)) 
       newPaths<-newPaths %>% add_row(path=paste(path,c,sep ='-'),cave=c)
@@ -49,14 +43,9 @@ solutions %>% nrow
 
 continue2<-function(path,cave){
   unlist(str_split(path,'-'))->prevCaves
-  prevCaves<-prevCaves[which(!prevCaves %in% maj)]
+  prevCaves<-prevCaves[!prevCaves %in% maj]
   newPaths<-data.frame(path=character(),cave=character())
-  day12A$X2[day12A$X1==cave] -> nextCaves
-  for(c in nextCaves) {
-    if(c %in% maj | !(c %in% prevCaves) | (!(anyDuplicated(prevCaves)) & c!="start")) 
-      newPaths<-newPaths %>% add_row(path=paste(path,c,sep ='-'),cave=c)
-  }
-  day12A$X1[day12A$X2==cave] -> nextCaves
+  c(day12A$X2[day12A$X1==cave],day12A$X1[day12A$X2==cave]) -> nextCaves
   for(c in nextCaves) {
     if(c %in% maj | !(c %in% prevCaves) | (!(anyDuplicated(prevCaves)) & c!="start")) 
       newPaths<-newPaths %>% add_row(path=paste(path,c,sep ='-'),cave=c)
@@ -67,7 +56,6 @@ continue2<-function(path,cave){
 path<-c("start")
 cave<-c("start")
 paths<-data.frame(path=path,cave=path)
-
 
 solutions<-data.frame(path=character(),cave=character())
 
@@ -87,7 +75,6 @@ testSol<-function(path){
 solutions %>% rowwise() %>% mutate(test=testSol(path)) %>% ungroup %>% summarise(sum(test))
 
 # 93572
-
 
 
 
