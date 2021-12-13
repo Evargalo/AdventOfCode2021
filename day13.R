@@ -24,3 +24,7 @@ d %>% gf_tile((-y)~x)
 
 # UCLZRAZU
 
+# Nicer
+
+d %>% gf_tile((-y)~x,fill = ~x,show.legend = FALSE)+
+  gf_theme(theme_void())+gf_refine(viridis::scale_fill_viridis(discrete = FALSE))
