@@ -1,4 +1,3 @@
-setwd("C:/Users/mmajr1/Documents/Perso/AdventOfCode/AoC_2021")
 require(igraph)
 
 # For Test
