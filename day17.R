@@ -1,3 +1,4 @@
+setwd("C:/Users/mmajr1/Documents/Perso/AdventOfCode/AoC_2021")
 
 # target area: x=153..199, y=-114..-75
 
@@ -37,7 +38,6 @@ calcTrajY(15,50)
 
 Ys<-c()
 highYs<-c()
-posYs<-c()
 
 # After at least how many steps is x in the target forever
 minStep<-which(calcTrajX(19)>=xMin)[1] 
@@ -47,13 +47,11 @@ vy<-10
 for (vy in 1:1000){
   print("vy=");print(vy)
   yTraj<-calcTrajY(vy,1000)
+  highY<-max(yTraj)
   yTraj<-yTraj[-(1:(minStep-1))]
   if (any(yMin <= yTraj & yTraj < yMax)) {
-    highY<-max(trajY)
-    posY<-which(trajY==highY)[1]
     highYs<-c(highYs,highY)
     Ys<-c(Ys,vy)
-    posYs<-c(posY)
   }
 }
 max(highYs)
