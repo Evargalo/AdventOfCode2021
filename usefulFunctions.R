@@ -73,7 +73,7 @@ reduceString<-function(s,pattern="[(][)]|[[][]]|[{][}]|[<][>]"){
 ###############
 # Binary ----
 
-BinToDec <- function(x, charactersForOnes) sum(2^(which(rev(unlist(strsplit(as.character(x), "")) %in% charactersForOnes))-1))
+BinToDec <- function(x, charactersForOnes="1") sum(2^(which(rev(unlist(strsplit(as.character(x), "")) %in% charactersForOnes))-1))
 # ones<-c("R","B")
 # x<-"BBFFBBFLRL"
 # BinToDec(x,ones)
