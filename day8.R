@@ -75,3 +75,5 @@ for(i in 1:nrow(day8A)){
   v<-v+d
 }
 v
+
+# 983030
