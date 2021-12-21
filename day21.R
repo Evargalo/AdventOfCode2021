@@ -59,7 +59,6 @@ finish$w %>% max
 finish %>% mutate(w=as.double(w),xWins=(x>20)) %>% 
   group_by(xWins) %>% summarise(sum(w)) ->res
 # for displaying result:
-res-140000000000000
-paste0(round(max(res),-11)%/%10^11,max(res)-round(max(res),-11))
+res %>% max %>% as.character()
 # 148747830493442
 
